@@ -11,7 +11,7 @@ import json
 class FileStorage:
     """ defines FileStorage class """
 
-    __file_path = "../../file.json"
+    __file_path = "file.json"
     __objects = {}
 
     """ defines __objects """
@@ -33,12 +33,9 @@ class FileStorage:
 
     """ deserializes the JSON file to __objects """
     def reload(self):
-        try:
-            if os.path.isfile(self.__file_path):
-                with open(self.__file_path, "r", encoding="UTF-8") as f:
-                    temp_reload = (json.load(f))
-                    for i in temp_reload.keys():
-                        self.__objects[i] = dict(temp_reload[i]) #need to somehow convert 
-                        return(self.__objects)
-        except Exception as e:
-            print (e)
+        if os.path.isfile(self.__file_path):
+            with open(self.__file_path, "r", encoding="UTF-8") as f:
+                temp_reload = (json.load(f))
+                for i in temp_reload.keys():
+                    self.__objects[i] = dict(temp_reload[i]) #need to somehow convert 
+                    return(self.__objects)
