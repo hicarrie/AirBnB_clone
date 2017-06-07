@@ -6,20 +6,23 @@ Module for base model
 
 from uuid import uuid4
 from datetime import datetime
+from .__init__ import storage
 
 
 class BaseModel:
     """ defines BaseModel class """
 
-    """ initiates instance """
+    """ initializes instance """
     def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+        storage.new(self)
 
     """ updates attribute updated_at with current datetime """
     def save(self):
         self.updated_at = datetime.now()
+        storage.save(self)
 
     """ returns dictionary of all keys/values of instance + the class name """
     def to_json(self):
