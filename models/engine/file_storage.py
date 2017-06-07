@@ -25,10 +25,10 @@ class FileStorage:
     """ serializes __objects to the JSON file """
     def save(self):
         with open(self.__file_path, "w", encoding="UTF-8") as f:
-            return json.dumps(self.__objects)
+            f.write(json.dumps(self.__objects))
 
     """ deserializes the JSON file to __objects """
     def reload(self):
         if os.path.isfile(self.__file_path):
-            with open(self.__file_path, "r", encoding="UTF-8") as f:
+            with open(self.__file_path, encoding="UTF-8") as f:
                 return json.load(f)
