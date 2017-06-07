@@ -25,10 +25,10 @@ class FileStorage:
     """ serializes __objects to the JSON file """
     def save(self):
         full_dict = {}
-        with open(self.__file_path, "w+", encoding="UTF-8") as f:
-            for i in self.__objects.keys():
-                temp = (self.__objects[i]).to_json()
-                full_dict[i] = temp
+        for i in self.__objects.keys():
+            temp = (self.__objects[i]).to_json()
+            full_dict[i] = temp
+        with open(self.__file_path, "a+", encoding="UTF-8") as f:
             f.write(json.dumps(full_dict))
 
     """ deserializes the JSON file to __objects """
@@ -38,7 +38,7 @@ class FileStorage:
                 with open(self.__file_path, "r", encoding="UTF-8") as f:
                     temp_reload = (json.load(f))
                     for i in temp_reload.keys():
-                        self.__objects[i] = dict(temp_reload[i]) #need to somehow convert 
+                        self.__objects.append(json.loads(temp_reload[i])) #need to somehow convert 
                         return(self.__objects)
         except Exception as e:
             print (e)
