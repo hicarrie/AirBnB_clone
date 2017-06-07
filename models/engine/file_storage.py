@@ -33,12 +33,10 @@ class FileStorage:
 
     """ deserializes the JSON file to __objects """
     def reload(self):
-        try:
-            if os.path.isfile(self.__file_path):
-                with open(self.__file_path, "r", encoding="UTF-8") as f:
-                    temp_reload = (json.load(f))
-                    for i in temp_reload.keys():
-                        self.__objects.append(json.loads(temp_reload[i])) #need to somehow convert 
-                        return(self.__objects)
-        except Exception as e:
-            print (e)
+        from models.base_model import BaseModel
+        if os.path.isfile(self.__file_path):
+            with open(self.__file_path, "r", encoding="UTF-8") as f:
+                temp_reload = (json.load(f))
+                for i in temp_reload.keys():
+                    self.__objects = BaseModel(temp_reload[i])
+        return(self.__objects)
