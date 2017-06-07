@@ -22,7 +22,7 @@ class BaseModel:
     """ updates attribute updated_at with current datetime """
     def save(self):
         self.updated_at = datetime.now()
-        storage.save(self)
+        storage.save()
 
     """ returns dictionary of all keys/values of instance + the class name """
     def to_json(self):
