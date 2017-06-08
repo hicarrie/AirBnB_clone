@@ -5,10 +5,21 @@ Module for main console
 
 
 import cmd
+from models.base_model import BaseModel
+from models import storage
 
+
+class_dict = {"BaseModel": BaseModel}
+        #"User": User,
+        #"State": State,
+        #"City": City,
+        #"Amenity": Amenity,
+        #"Place": Place,
+        #"Review": Review
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
+
     prompt = "(hbnb) "
 
     def emptyline(self):
@@ -21,6 +32,49 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         "Quit command to exit the program"
         return True
+
+    def do_create(self, arg):
+        "Creates new instance, saves it, and prints id"
+        args = arg.split()
+        if len(args) != 1:
+            print("** class name missing **")
+        if args[0] in class_dict:
+            new = class_dict.get(args[0])()
+            storage.save()
+        else:
+            print("** class doesn't exist **")
+
+    def do_show(self, arg):
+        "Prints string representation of an instance based on class name/id"
+        pass
+
+    def do_destroy(self, arg):
+        "Deletes instance based on class name/id"
+        args = arg.split()
+        if len(args) != 2:
+            print("** class name missing **")
+            print("** instance id missing **")
+        temp = storage.all()
+        print(temp)
+        print(args[1])
+        if args[0] in class_dict:
+            for key, value in (storage.all()).items():
+                #if args[1] in storage.all():
+                if value == args[1]:
+                    del key
+                    storage.save()
+                else:
+                    print("** instance id missing **")
+        else:
+            print("** class doesn't exist**")
+
+    def do_all(self, arg):
+        "Prints string representations of all instances or instances of a class"
+        pass
+
+    def do_update(self, arg):
+        "Updates instance based on class name/id by adding/updating attribute"
+        pass
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
