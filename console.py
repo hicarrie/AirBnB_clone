@@ -54,17 +54,14 @@ class HBNBCommand(cmd.Cmd):
         if len(args) != 2:
             print("** class name missing **")
             print("** instance id missing **")
-        temp = storage.all()
-        print(temp)
-        print(args[1])
+        object_dict = storage.all()
         if args[0] in class_dict:
-            for key, value in (storage.all()).items():
-                #if args[1] in storage.all():
-                if value == args[1]:
-                    del key
-                    storage.save()
-                else:
-                    print("** instance id missing **")
+            for key in object_dict:
+                if key == args[1]:
+                    remove = key
+            del object_dict[remove]
+            storage.save()
+            print("** instance id missing **")
         else:
             print("** class doesn't exist**")
 
