@@ -14,10 +14,13 @@ class BaseModel:
 
     """ initializes instance """
     def __init__(self, *args, **kwargs):
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        storage.new(self)
+        if len(kwargs) > 0:
+            self.__dict__ = kwargs[0]
+            self.created_at = datetime.now()
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            storage.new(self)
 
     """ updates attribute updated_at with current datetime """
     def save(self):
@@ -29,7 +32,8 @@ class BaseModel:
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
         new_dict.update({'created_at': str(self.created_at)})
-        new_dict.update({'updated_at': str(self.updated_at)})
+        if "updated_at" in new_dict:
+            new_dict.update({'updated_at': str(self.updated_at)})
         return new_dict
 
     """ prints dictionary of attributes of the instance """
