@@ -15,6 +15,8 @@ class BaseModel:
     """ initializes instance """
     def __init__(self, *args, **kwargs):
         if len(kwargs) > 0:
+            if "__class__" in kwargs:
+                del kwargs["__class__"]
             self.__dict__ = kwargs
             created = datetime.strptime(kwargs.get('created_at'), "%Y-%m-%d %H:%M:%S.%f")
             self.__dict__.update({'created_at': created})
