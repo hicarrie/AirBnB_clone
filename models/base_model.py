@@ -15,8 +15,7 @@ class BaseModel:
     """ initializes instance """
     def __init__(self, *args, **kwargs):
         if len(kwargs) > 0:
-            self.__dict__ = kwargs[0]
-            self.created_at = datetime.now()
+            self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()

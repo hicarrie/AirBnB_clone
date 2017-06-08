@@ -37,7 +37,4 @@ class FileStorage:
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as f:
                 temp_reload = json.load(f)
                 for i in temp_reload.keys():
-                    FileStorage.__objects[i] = BaseModel(temp_reload[i])
-                    print("Our print!")
-                    print(FileStorage.__objects[i])
-            #return(FileStorage.__objects)
+                    FileStorage.__objects[i] = BaseModel(**temp_reload[i])
