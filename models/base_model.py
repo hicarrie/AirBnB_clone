@@ -6,7 +6,7 @@ Module for base model
 
 from uuid import uuid4
 from datetime import datetime
-from .__init__ import storage
+from models import storage
 
 
 class BaseModel:
@@ -14,10 +14,19 @@ class BaseModel:
 
     """ initializes instance """
     def __init__(self, *args, **kwargs):
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        storage.new(self)
+        if len(kwargs) > 0:
+            if "__class__" in kwargs:
+                del kwargs["__class__"]
+            self.__dict__ = kwargs
+            created = datetime.strptime(kwargs.get('created_at'), "%Y-%m-%d %H:%M:%S.%f")
+            self.__dict__.update({'created_at': created})
+            if "updated_at" in self.__dict__:
+                updated = datetime.strptime(kwargs.get('updated_at'), "%Y-%m-%d %H:%M:%S.%f")
+                self.__dict__.update({'updated_at': updated})
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            storage.new(self)
 
     """ updates attribute updated_at with current datetime """
     def save(self):
@@ -29,7 +38,8 @@ class BaseModel:
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
         new_dict.update({'created_at': str(self.created_at)})
-        new_dict.update({'updated_at': str(self.updated_at)})
+        if "updated_at" in new_dict:
+            new_dict.update({'updated_at': str(self.updated_at)})
         return new_dict
 
     """ prints dictionary of attributes of the instance """
