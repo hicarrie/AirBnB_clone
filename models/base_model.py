@@ -16,6 +16,11 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         if len(kwargs) > 0:
             self.__dict__ = kwargs
+            created = datetime.strptime(kwargs.get('created_at'), "%Y-%m-%d %H:%M:%S.%f")
+            self.__dict__.update({'created_at': created})
+            if "updated_at" in self.__dict__:
+                updated = datetime.strptime(kwargs.get('updated_at'), "%Y-%m-%d %H:%M:%S.%f")
+                self.__dict__.update({'updated_at': updated})
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
