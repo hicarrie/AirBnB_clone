@@ -2,16 +2,18 @@
 
 from models.base_model import BaseModel
 
-class User(BaseModel):
-    """defines BaseModel class"""
+class Review(BaseModel):
+    """defines Review class"""
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
+        #will be Place.id
+        self.place_id = ""
+        #will be User.id
+        self.user_id = ""
+        self.text = ""
+       
         if kwargs.get(id) != None:
             self.__dict__ = kwargs
         else:
-            self.email = ""
-            self.password = ""
-            self.first_name = ""
-            self.last_name = ""
             super().__init__()
