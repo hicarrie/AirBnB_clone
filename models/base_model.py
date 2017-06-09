@@ -45,3 +45,7 @@ class BaseModel:
     """ prints dictionary of attributes of the instance """
     def __str__(self):
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
+    """ prints dictionary of attributes of the instance """
+    def __repr__(self):
+        return self.__str__()
