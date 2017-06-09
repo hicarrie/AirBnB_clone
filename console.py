@@ -48,9 +48,10 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         "Prints string representation of an instance based on class name/id"
         args = arg.split()
-        if len(args) != 2:
-            print("** class name missing **")
+        if len(args) < 2:
             print("** instance id missing **")
+        if len(args) < 1:
+            print("** class name missing **")
         object_dict = storage.all()
         if args[0] in class_dict:
             for full_key in object_dict:
@@ -67,8 +68,9 @@ class HBNBCommand(cmd.Cmd):
         "Deletes instance based on class name/id"
         args = arg.split()
         if len(args) < 2:
-            print("** class name missing **")
             print("** instance id missing **")
+        if len(args) < 1:
+            print("** class name missing **")
         object_dict = storage.all()
         if args[0] in class_dict:
             for full_key in object_dict:
@@ -101,14 +103,13 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(" ", 3)
         object_dict = storage.all()
         if len(args) < 4:
-            #if id is missing
-            print("** instance id missing **")
-            #if class name is missing
-            print("** class name missing **")
-            #if attribute value is missing
-            print("** value missing **")
-            #if attribute name is missing
             print("** attribute name missing **")
+        if len(args) < 3:
+            print("** value missing **")
+        if len(args) < 2:
+            print("** class name missing **")
+        if len(args) < 1:
+            print("** instance id missing **")
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
