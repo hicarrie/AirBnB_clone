@@ -7,12 +7,11 @@ class User(BaseModel):
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
-        self.email = ""
-        self.password = ""
-        self.first_name = ""
-        self.last_name = ""
-
         if kwargs.get(id) != None:
             self.__dict__ = kwargs
         else:
+            self.email = ""
+            self.password = ""
+            self.first_name = ""
+            self.last_name = ""
             super().__init__()
