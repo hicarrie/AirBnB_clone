@@ -10,12 +10,12 @@ from models import storage
 
 
 class_dict = {"BaseModel": BaseModel}
-        "User": User,
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review
+        #"User": User,
+        #"State": State,
+        #"City": City,
+        #"Amenity": Amenity,
+        #"Place": Place,
+        #"Review": Review
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
