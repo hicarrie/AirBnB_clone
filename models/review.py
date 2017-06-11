@@ -16,7 +16,7 @@ class Review(BaseModel):
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
-        if kwargs.get(id) is not None:
+        if len(kwargs) > 0:
             self.__dict__ = kwargs
         else:
             super().__init__()
