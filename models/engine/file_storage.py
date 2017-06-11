@@ -42,13 +42,15 @@ class FileStorage:
         from models.place import Place
         from models.review import Review
 
-        reload_dict = {"BaseModel": BaseModel, "User": User,"State": State,"City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+        reload_dict = {"BaseModel": BaseModel, "User": User, "State": State,
+                       "City": City, "Amenity": Amenity, "Place": Place,
+                       "Review": Review}
 
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as f:
-                temp_reload = json.load(f)
-                for obj, value in temp_reload.items():
-                    item_class = temp_reload[obj].get("__class__")
+                reloaded = json.load(f)
+                for obj, value in reloaded.items():
+                    item_class = reloaded[obj].get("__class__")
                     if item_class in reload_dict:
-                        class_func = reload_dict.get(item_class)
-                        FileStorage.__objects[obj] = class_func(**temp_reload[obj])
+                        cls_func = reload_dict.get(item_class)
+                        FileStorage.__objects[obj] = cls_func(**reloaded[obj])

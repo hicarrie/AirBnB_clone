@@ -14,7 +14,9 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
+              City, "Amenity": Amenity, "Place": Place, "Review": Review}
+
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
@@ -85,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist**")
 
     def do_all(self, arg):
-        "Prints string representations of all instances or instances of a class"
+        "Prints string representation of all instances or instances of a class"
         args = arg.split()
         object_dict = storage.all()
         if len(args) == 0:

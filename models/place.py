@@ -1,9 +1,15 @@
 #!/usr/bin/python3
+"""
+Module for Place class
+"""
+
 
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """defines Place class"""
+
     city_id = ""
     user_id = ""
     name = ""
@@ -18,7 +24,7 @@ class Place(BaseModel):
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
-        if kwargs.get(id) != None:
+        if kwargs.get(id) is not None:
             self.__dict__ = kwargs
         else:
             super().__init__()
