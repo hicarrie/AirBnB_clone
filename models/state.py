@@ -3,12 +3,11 @@
 from models.base_model import BaseModel
 
 class State(BaseModel):
-    """defines BaseModel class"""
+    """defines State class"""
+    name = ""
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
-        self.name = ""
-
         if kwargs.get(id) != None:
             self.__dict__ = kwargs
         else:

@@ -17,7 +17,7 @@ class User(BaseModel):
 
     """initializes instances"""
     def __init__(self, *args, **kwargs):
-        if len(kwargs) > 0:
+        if kwargs.get(id) != None:
             self.__dict__ = kwargs
         else:
             super().__init__(self)

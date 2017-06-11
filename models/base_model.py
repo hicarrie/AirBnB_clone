@@ -15,7 +15,7 @@ class BaseModel:
 
     """ initializes instance """
     def __init__(self, *args, **kwargs):
-        if len(kwargs) > 0:
+        if kwargs.get(id) != None:
             if "__class__" in kwargs:
                 del kwargs["__class__"]
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'], self.timeformat)
