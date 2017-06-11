@@ -11,20 +11,21 @@ from models import storage
 
 class BaseModel:
     """ defines BaseModel class """
-    timeformat = "%Y-%m-%d %H:%M:%S.%f"
-
+    timeformat = "%Y-%m-%dT%H:%M:%S.%f"
 
     """ initializes instance """
     def __init__(self, *args, **kwargs):
         if len(kwargs) > 0:
             if "__class__" in kwargs:
                 del kwargs["__class__"]
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'], self.timeformat)
+            if "updated_at" in kwargs:
+                kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], self.timeformat)
             self.__dict__ = kwargs
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             storage.new(self)
-            super().__init__()
 
     """ updates attribute updated_at with current datetime """
     def save(self):
@@ -35,9 +36,9 @@ class BaseModel:
     def to_json(self):
         new_dict = self.__dict__.copy()
         new_dict.update({'__class__': str(self.__class__.__name__)})
-        new_dict.update({'created_at': str(self.created_at)})
-        if "updated_at" in new_dict:
-            new_dict.update({'updated_at': str(self.updated_at)})
+        for key, value in new_dict.items():
+            if isinstance(value, datetime):
+                new_dict[key] = value.strftime(self.timeformat)
         return new_dict
 
     """ prints dictionary of attributes of the instance """

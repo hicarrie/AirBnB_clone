@@ -41,25 +41,14 @@ class FileStorage:
         from models.amenity import Amenity
         from models.place import Place
         from models.review import Review
-        timeformat = "%Y-%m-%dT%H:%M:%S.%f"
 
         reload_dict = {"BaseModel": BaseModel, "User": User,"State": State,"City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
         if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="UTF-8") as f:
                 temp_reload = json.load(f)
-                for item in temp_reload.keys():
-                    print("ITEM:", item)
-                    item_class = temp_reload[item].get("__class__")
-                    print("TEMP_RELOAD[ITEM]:", temp_reload[item])
+                for obj, value in temp_reload.items():
+                    item_class = temp_reload[obj].get("__class__")
                     if item_class in reload_dict:
                         class_func = reload_dict.get(item_class)
-                        FileStorage.__objects[item] = class_func(**temp_reload[item])
-                    created_at = temp_reload[item].get("created_at")
-                    print("CREATED_AT:", created_at)
-                    temp_reload[item].update({'created_at': datetime.strptime(created_at, timeformat)})
-                    print("CREATED_AT_VALUE:", temp_reload[item].get("created_at"))
-            # print("CREATED_AT:", self.created_at)
-            # if "updated_at" in self.__dict__:
-            #     print("UPDATED_AT:", self.updated_at)
-            #     self.updated_at = datetime.strptime(kwargs.get('updated_at'), timeformat)
+                        FileStorage.__objects[obj] = class_func(**temp_reload[obj])
