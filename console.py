@@ -39,6 +39,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) != 1:
             print("** class name missing **")
+            return
         if args[0] in self.class_dict:
             new = self.class_dict.get(args[0])()
             print(new.id)
@@ -123,18 +124,22 @@ class HBNBCommand(cmd.Cmd):
             args[0]
         except:
             print("** class name missing **")
+            return
         try:
             args[1]
         except:
             print("** instance id missing **")
+            return
         try:
             args[2]
         except:
             print("** attribute name missing **")
+            return
         try:
             args[3]
         except:
             print("** value missing **")
+            return
 
         for full_key in object_dict.keys():
             key = full_key.split('.')
