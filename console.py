@@ -14,12 +14,12 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
-              City, "Amenity": Amenity, "Place": Place, "Review": Review}
-
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
+
+    class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
+                  City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
     prompt = "(hbnb) "
 
@@ -39,8 +39,9 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) != 1:
             print("** class name missing **")
-        if args[0] in class_dict:
-            new = class_dict.get(args[0])()
+            return
+        if args[0] in self.class_dict:
+            new = self.class_dict.get(args[0])()
             print(new.id)
             storage.save()
         else:
@@ -49,12 +50,19 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         "Prints string representation of an instance based on class name/id"
         args = arg.split()
-        if len(args) < 2:
-            print("** instance id missing **")
-        if len(args) < 1:
+        if len(args) == 0:
             print("** class name missing **")
+            print("** instance id missing **")
+            return
+        elif len(args) < 2 and args[0] in self.class_dict:
+            print("** instance id missing **")
+            return
+        elif len(args) < 2:
+            print("** class name missing **")
+            return
+
         object_dict = storage.all()
-        if args[0] in class_dict:
+        if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
                 id_only = key[1]
@@ -68,12 +76,19 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         "Deletes instance based on class name/id"
         args = arg.split()
-        if len(args) < 2:
-            print("** instance id missing **")
-        if len(args) < 1:
+        if len(args) == 0:
             print("** class name missing **")
+            print("** instance id missing **")
+            return
+        elif len(args) < 2 and args[0] in self.class_dict:
+            print("** instance id missing **")
+            return
+        elif len(args) < 2:
+            print("** class name missing **")
+            return
+
         object_dict = storage.all()
-        if args[0] in class_dict:
+        if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
                 id_only = key[1]
@@ -94,23 +109,38 @@ class HBNBCommand(cmd.Cmd):
             for item in object_dict:
                 print(object_dict[item])
         if len(args) == 1:
-            if args[0] in class_dict:
+            if args[0] in self.class_dict:
                 for key, value in object_dict.items():
                     if value.__class__.__name__ == args[0]:
                         print(value)
+            else:
+                print("** class doesn't exist **")
 
     def do_update(self, arg):
         "Updates instance based on class name/id by adding/updating attribute"
         args = arg.split(" ", 3)
         object_dict = storage.all()
-        if len(args) < 4:
-            print("** attribute name missing **")
-        if len(args) < 3:
-            print("** value missing **")
-        if len(args) < 2:
+        try:
+            args[0]
+        except:
             print("** class name missing **")
-        if len(args) < 1:
+            return
+        try:
+            args[1]
+        except:
             print("** instance id missing **")
+            return
+        try:
+            args[2]
+        except:
+            print("** attribute name missing **")
+            return
+        try:
+            args[3]
+        except:
+            print("** value missing **")
+            return
+
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
