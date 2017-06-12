@@ -14,12 +14,12 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
-              City, "Amenity": Amenity, "Place": Place, "Review": Review}
-
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
+
+    class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
+                  City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
     prompt = "(hbnb) "
 
@@ -39,8 +39,8 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) != 1:
             print("** class name missing **")
-        if args[0] in class_dict:
-            new = class_dict.get(args[0])()
+        if args[0] in self.class_dict:
+            new = self.class_dict.get(args[0])()
             print(new.id)
             storage.save()
         else:
@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 1:
             print("** class name missing **")
         object_dict = storage.all()
-        if args[0] in class_dict:
+        if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
                 id_only = key[1]
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 1:
             print("** class name missing **")
         object_dict = storage.all()
-        if args[0] in class_dict:
+        if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
                 id_only = key[1]
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
             for item in object_dict:
                 print(object_dict[item])
         if len(args) == 1:
-            if args[0] in class_dict:
+            if args[0] in self.class_dict:
                 for key, value in object_dict.items():
                     if value.__class__.__name__ == args[0]:
                         print(value)
