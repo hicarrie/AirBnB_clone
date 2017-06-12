@@ -49,10 +49,17 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         "Prints string representation of an instance based on class name/id"
         args = arg.split()
-        if len(args) < 2:
-            print("** instance id missing **")
-        if len(args) < 1:
+        if len(args) == 0:
             print("** class name missing **")
+            print("** instance id missing **")
+            return
+        elif len(args) < 2 and args[0] in self.class_dict:
+            print("** instance id missing **")
+            return
+        elif len(args) < 2:
+            print("** class name missing **")
+            return
+
         object_dict = storage.all()
         if args[0] in self.class_dict:
             for full_key in object_dict:
@@ -68,10 +75,17 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         "Deletes instance based on class name/id"
         args = arg.split()
-        if len(args) < 2:
-            print("** instance id missing **")
-        if len(args) < 1:
+        if len(args) == 0:
             print("** class name missing **")
+            print("** instance id missing **")
+            return
+        elif len(args) < 2 and args[0] in self.class_dict:
+            print("** instance id missing **")
+            return
+        elif len(args) < 2:
+            print("** class name missing **")
+            return
+
         object_dict = storage.all()
         if args[0] in self.class_dict:
             for full_key in object_dict:
@@ -98,19 +112,30 @@ class HBNBCommand(cmd.Cmd):
                 for key, value in object_dict.items():
                     if value.__class__.__name__ == args[0]:
                         print(value)
+            else:
+                print("** class doesn't exist **")
 
     def do_update(self, arg):
         "Updates instance based on class name/id by adding/updating attribute"
         args = arg.split(" ", 3)
         object_dict = storage.all()
-        if len(args) < 4:
-            print("** attribute name missing **")
-        if len(args) < 3:
-            print("** value missing **")
-        if len(args) < 2:
+        try:
+            args[0]
+        except:
             print("** class name missing **")
-        if len(args) < 1:
+        try:
+            args[1]
+        except:
             print("** instance id missing **")
+        try:
+            args[2]
+        except:
+            print("** attribute name missing **")
+        try:
+            args[3]
+        except:
+            print("** value missing **")
+
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
