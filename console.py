@@ -5,17 +5,18 @@ Module for main console
 
 
 import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
+class_dict = {"BaseModel": BaseModel, "User": User, "State": State, "City":
+              City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
-class_dict = {"BaseModel": BaseModel}
-        "User": User,
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review
 
 class HBNBCommand(cmd.Cmd):
     """ defines HBNBCommand class """
@@ -48,9 +49,10 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         "Prints string representation of an instance based on class name/id"
         args = arg.split()
-        if len(args) != 2:
-            print("** class name missing **")
+        if len(args) < 2:
             print("** instance id missing **")
+        if len(args) < 1:
+            print("** class name missing **")
         object_dict = storage.all()
         if args[0] in class_dict:
             for full_key in object_dict:
@@ -67,8 +69,9 @@ class HBNBCommand(cmd.Cmd):
         "Deletes instance based on class name/id"
         args = arg.split()
         if len(args) < 2:
-            print("** class name missing **")
             print("** instance id missing **")
+        if len(args) < 1:
+            print("** class name missing **")
         object_dict = storage.all()
         if args[0] in class_dict:
             for full_key in object_dict:
@@ -84,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist**")
 
     def do_all(self, arg):
-        "Prints string representations of all instances or instances of a class"
+        "Prints string representation of all instances or instances of a class"
         args = arg.split()
         object_dict = storage.all()
         if len(args) == 0:
@@ -101,14 +104,13 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split(" ", 3)
         object_dict = storage.all()
         if len(args) < 4:
-            #if id is missing
-            print("** instance id missing **")
-            #if class name is missing
-            print("** class name missing **")
-            #if attribute value is missing
-            print("** value missing **")
-            #if attribute name is missing
             print("** attribute name missing **")
+        if len(args) < 3:
+            print("** value missing **")
+        if len(args) < 2:
+            print("** class name missing **")
+        if len(args) < 1:
+            print("** instance id missing **")
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
