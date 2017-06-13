@@ -115,6 +115,9 @@ class HBNBCommand(cmd.Cmd):
                         print(value)
             else:
                 print("** class doesn't exist **")
+                return
+            if not object_dict:
+                print("[]")
 
     def do_update(self, arg):
         """Updates instance based on class name/id
