@@ -68,9 +68,8 @@ class HBNBCommand(cmd.Cmd):
                 id_only = key[1]
                 if key[1] == args[1]:
                     print(object_dict[full_key])
-                    break
-                else:
-                    print("** no instance found **")
+                    return
+            print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
@@ -96,9 +95,8 @@ class HBNBCommand(cmd.Cmd):
                     remove = full_key
                     del object_dict[full_key]
                     storage.save()
-                    break
-                else:
-                    print("** instance id missing **")
+                    return
+            print("** instance id missing **")
         else:
             print("** class doesn't exist **")
 
