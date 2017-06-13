@@ -22,8 +22,8 @@ class Place(BaseModel):
     longitude = 0.0
     amenity_ids = ""
 
-    """initializes instances"""
     def __init__(self, *args, **kwargs):
+        """initializes instances"""
         if len(kwargs) > 0:
             self.__dict__ = kwargs
         else:

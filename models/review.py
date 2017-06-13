@@ -14,8 +14,8 @@ class Review(BaseModel):
     user_id = ""
     text = ""
 
-    """initializes instances"""
     def __init__(self, *args, **kwargs):
+        """initializes instances"""
         if len(kwargs) > 0:
             self.__dict__ = kwargs
         else:
