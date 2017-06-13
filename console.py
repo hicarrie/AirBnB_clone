@@ -57,9 +57,6 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2 and args[0] in self.class_dict:
             print("** instance id missing **")
             return
-        elif len(args) < 2:
-            print("** class name missing **")
-            return
 
         object_dict = storage.all()
         if args[0] in self.class_dict:
@@ -143,17 +140,17 @@ class HBNBCommand(cmd.Cmd):
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
-            if args[0] == object_dict[full_key].__class__.__name__:
+            if args[0] in self.class_dict:
                 if args[1] == object_dict[full_key].id:
                     setattr(object_dict[full_key], args[2], args[3])
                     setattr(object_dict[full_key], "updated_at",
                             datetime.now())
                     storage.save()
                     return
-                else:
-                    print("** no instance found **")
             else:
                 print("** class doesn't exist **")
+                return
+        print("** no instance found **")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
