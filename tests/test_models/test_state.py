@@ -2,19 +2,18 @@
 import unittest
 import os
 from models.base_model import BaseModel
-from models.user import User
+from models.state import State
+'''test module for State class'''
 
-'''test module for User class'''
 
-
-class TestUser(unittest.TestCase):
+class TestAmenity(unittest.TestCase):
 
     def setUp(self):
-        '''method to set up instance of BaseModel/json file'''
-        self.user = User()
+        '''method to set up instance of State/json file'''
+        self.state = State()
 
     def tearDown(self):
-        '''method to tear down instance of BaseModel/json file'''
+        '''method to tear down instance of State/json file'''
         if os.path.exists("file.json"):
             try:
                 os.remove("file.json")
@@ -23,34 +22,31 @@ class TestUser(unittest.TestCase):
 
     def test___init__(self):
         '''method to check if instance initializes'''
-        self.assertIsNotNone(self.user)
+        self.assertIsNotNone(self.state)
 
     def test_attributes(self):
         '''method to test if updates take place in save'''
-        self.assertEqual(self.user.email, "")
-        self.assertEqual(self.user.password, "")
-        self.assertEqual(self.user.first_name, "")
-        self.assertEqual(self.user.last_name, "")
-        self.assertTrue(hasattr(self.user, "created_at"))
-        self.assertFalse(hasattr(self.user, "updated_at"))
-        self.assertTrue(hasattr(self.user, "id"))
-        self.user.save()
-        self.assertTrue(hasattr(self.user, "updated_at"))
+        self.assertEqual(self.state.name, "")
+        self.assertTrue(hasattr(self.state, "created_at"))
+        self.assertFalse(hasattr(self.state, "updated_at"))
+        self.assertTrue(hasattr(self.state, "id"))
+        self.state.save()
+        self.assertTrue(hasattr(self.state, "updated_at"))
 
     def test_to_json(self):
         '''method to check that the to_json function returns'''
-        example_tojson = User.to_json(self.user)
+        example_tojson = State.to_json(self.state)
         self.assertEqual(type(example_tojson), dict)
 
     def test___str__(self):
         '''method to check that dict printing instance'''
         example = "[{}] ({}) {}".format(self.__class__.__name__,
                                         self.id, self.__dict__)
-        self.assertEqual(print(self.user), print(example))
+        self.assertEqual(print(self.state), print(example))
 
     def test__repr__(self):
         '''method to print attributes of dictionary'''
-        self.assertIsNotNone(self.user.__str__())
+        self.assertIsNotNone(self.state.__str__())
 
 if __name__ == "__main__":
     main()

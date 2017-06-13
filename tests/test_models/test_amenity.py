@@ -27,7 +27,6 @@ class TestAmenity(unittest.TestCase):
 
     def test_attributes(self):
         '''method to test if updates take place in save'''
-        name = ""
         self.assertEqual(self.amenity.name, "")
         self.assertTrue(hasattr(self.amenity, "created_at"))
         self.assertFalse(hasattr(self.amenity, "updated_at"))
