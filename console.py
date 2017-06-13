@@ -78,10 +78,6 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-<<<<<<< HEAD
-=======
-            print("** instance id missing **")
->>>>>>> parent of d0466f5... Fix error printing
             return
         elif len(args) < 2 and args[0] in self.class_dict:
             print("** instance id missing **")
