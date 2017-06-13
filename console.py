@@ -5,6 +5,7 @@ Module for main console
 
 
 import cmd
+from datetime import datetime
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -147,6 +148,7 @@ class HBNBCommand(cmd.Cmd):
             if args[0] == object_dict[full_key].__class__.__name__:
                 if args[1] == object_dict[full_key].id:
                     setattr(object_dict[full_key], args[2], args[3])
+                    setattr(object_dict[full_key], "updated_at", datetime.now())
                     storage.save()
                     return
                 print("** no instance found **")
