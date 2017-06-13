@@ -25,20 +25,20 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def emptyline(self):
-        """ Handles empty lines """
+        """Handles empty lines"""
         return False
 
     def do_EOF(self, line):
-        "EOF exits the program"
+        """EOF exits the program"""
         print("")
         return True
 
     def do_quit(self, line):
-        "Quit command to exit the program"
+        """Quit command to exit the program"""
         return True
 
     def do_create(self, arg):
-        "Creates new instance, saves it, and prints id"
+        """Creates new instance, saves it, and prints id"""
         args = arg.split()
         if len(args) != 1:
             print("** class name missing **")
@@ -51,7 +51,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        "Prints string representation of an instance based on class name/id"
+        """Prints string representation of an
+        instance based on class name/id"""
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -73,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, arg):
-        "Deletes instance based on class name/id"
+        """Deletes instance based on class name/id"""
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -100,7 +101,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-        "Prints string representation of all instances or instances of a class"
+        """Prints string representation of all instances
+        or all instances of a class"""
         args = arg.split()
         object_dict = storage.all()
         if len(args) == 0:
@@ -115,7 +117,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_update(self, arg):
-        "Updates instance based on class name/id by adding/updating attribute"
+        """Updates instance based on class name/id
+        by adding/updating attribute"""
         args = arg.split(" ", 3)
         object_dict = storage.all()
         try:
