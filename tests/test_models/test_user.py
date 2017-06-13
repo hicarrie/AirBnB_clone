@@ -27,10 +27,6 @@ class TestUser(unittest.TestCase):
 
     def test_attributes(self):
         '''method to test if updates take place in save'''
-        email = ""
-        password = ""
-        first_name = ""
-        last_name = ""
         self.assertEqual(self.user.email, "")
         self.assertEqual(self.user.password, "")
         self.assertEqual(self.user.first_name, "")
