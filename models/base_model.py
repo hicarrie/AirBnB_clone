@@ -50,6 +50,6 @@ class BaseModel:
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
-    def __repr__(self):
-        """ prints dictionary of attributes of the instance """
-        return self.__str__()
+    #def __repr__(self):
+        #""" prints dictionary of attributes of the instance """
+        #return self.__str__()
