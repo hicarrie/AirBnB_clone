@@ -10,11 +10,11 @@ from models.city import City
 class TestCity(unittest.TestCase):
 
     def setUp(self):
-        '''method to set up instance of BaseModel/json file'''
+        '''method to set up instance of city/json file'''
         self.city = City()
 
     def tearDown(self):
-        '''method to tear down instance of BaseModel/json file'''
+        '''method to tear down instance of city/json file'''
         if os.path.exists("file.json"):
             try:
                 os.remove("file.json")
