@@ -25,6 +25,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def emptyline(self):
+        """ Handles empty lines """
         return False
 
     def do_EOF(self, line):
