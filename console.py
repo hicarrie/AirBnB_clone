@@ -69,7 +69,8 @@ class HBNBCommand(cmd.Cmd):
                 if key[1] == args[1]:
                     print(object_dict[full_key])
                     break
-                print("** no instance found **")
+                else:
+                    print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
