@@ -100,9 +100,10 @@ class HBNBCommand(cmd.Cmd):
                     del object_dict[full_key]
                     storage.save()
                     break
-                print("** instance id missing **")
+                else:
+                    print("** instance id missing **")
         else:
-            print("** class doesn't exist**")
+            print("** class doesn't exist **")
 
     def do_all(self, arg):
         "Prints string representation of all instances or instances of a class"
@@ -154,7 +155,8 @@ class HBNBCommand(cmd.Cmd):
                             datetime.now())
                     storage.save()
                     return
-                print("** no instance found **")
+                else:
+                    print("** no instance found **")
             else:
                 print("** class doesn't exist **")
 
