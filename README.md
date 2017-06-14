@@ -9,10 +9,10 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 
 ## How to use the Console
 To start:
-a. Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
-b. Non-interactive mode, `$ echo "help" | ./console.py`
+* Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
+*Non-interactive mode, `$ echo "help" | ./console.py`
 To close:
-Type either `EOF` or `quit`
+* Type either `EOF` or `quit`
 ### Command usage of Console
 * `help`
   * Usage: `help`
