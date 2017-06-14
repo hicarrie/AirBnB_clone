@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
                     del object_dict[full_key]
                     storage.save()
                     return
-            print("** instance id missing **")
+            print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** attribute name missing **")
                 return
             elif len(args) == 3:
-                print("** attribute value missing **")
+                print("** value missing **")
                 return
         else:
             print("** class doesn't exist **")
