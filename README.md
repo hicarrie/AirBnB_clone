@@ -8,10 +8,10 @@ Files interpreted/run on Ubuntu 14.04 LTS with Python 3
 All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-0008/
 
 ## How to use the Console
-To start:
+### To start:
 * Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
 *Non-interactive mode, `$ echo "help" | ./console.py`
-To close:
+### To close:
 * Type either `EOF` or `quit`
 ### Command usage of Console
 * `help`
