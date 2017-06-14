@@ -59,6 +59,26 @@ Module for Amenity Model
 Module for City Model
 * `class City` includes:
   * `def __init__(self, *args, **kwargs) : method to make instance of amenity
+### `place.py`
+Module for Place Model
+* `class Place` includes:
+  * `def __init__(self, *args, **kwargs) : method to make an instance of place
+### `review.py`
+Module for Review Model
+* `class Review` includes:
+  * `def __init__(self, *args, **kwargs) : method to initialize instance of review
+### `state.py`
+Module for State Model
+* `class State` includes:
+  * `def __init__(self, *args, **kwargs) : method to make an instance of state
+### `user.py`
+Module for User Model
+* `class User` includes:
+  * `def __init__(self, *args, **kwargs) : method to make instance of user
+### `__init__.py`
+Module for Init
+* creates an instance of FileStorage and reloads it
+ 
  
 ## Limitations
 
@@ -71,4 +91,5 @@ Module for City Model
 * Naomi Sorrell, <a href='https://github.com/NamoDawn'>Github</a>
 
 ## License
-Public Domain, no copywrite protection
+Public Domain, no copywrite protection### `amenity.py`
+ 
