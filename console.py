@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """EOF exits the program"""
-        print("")
+        print()
         return True
 
     def do_quit(self, line):
@@ -41,13 +41,13 @@ class HBNBCommand(cmd.Cmd):
         """Creates new instance, saves it, and prints id
         Usage: $ create <class name>"""
         args = arg.split()
-        if len(args) != 1:
+        if len(args) == 0:
             print("** class name missing **")
             return
         if args[0] in self.class_dict:
             new = self.class_dict.get(args[0])()
-            print(new.id)
             storage.save()
+            print(new.id)
         else:
             print("** class doesn't exist **")
 
@@ -66,7 +66,6 @@ class HBNBCommand(cmd.Cmd):
         if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
-                id_only = key[1]
                 if key[1] == args[1]:
                     print(object_dict[full_key])
                     return
@@ -92,9 +91,7 @@ class HBNBCommand(cmd.Cmd):
         if args[0] in self.class_dict:
             for full_key in object_dict:
                 key = full_key.split(".")
-                id_only = key[1]
                 if key[1] == args[1]:
-                    remove = full_key
                     del object_dict[full_key]
                     storage.save()
                     return
@@ -124,27 +121,23 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates instance based on class name/id by adding/updating attribute
         Usage: $ update <class name> <id> <attribute name> <attribute value>"""
-        args = arg.split(" ", 3)
+        args = arg.split()
         object_dict = storage.all()
-        try:
-            args[0]
-        except:
+        if len(args) == 0:
             print("** class name missing **")
             return
-        try:
-            args[1]
-        except:
-            print("** instance id missing **")
-            return
-        try:
-            args[2]
-        except:
-            print("** attribute name missing **")
-            return
-        try:
-            args[3]
-        except:
-            print("** value missing **")
+        if args[0] in self.class_dict:
+            if len(args) == 1:
+                print("** instance id missing **")
+                return
+            elif len(args) == 2:
+                print("** attribute name missing **")
+                return
+            elif len(args) == 3:
+                print("** attribute value missing **")
+                return
+        else:
+            print("** class doesn't exist **")
             return
 
         for i in range(len(args)):
