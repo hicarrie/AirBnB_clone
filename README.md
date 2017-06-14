@@ -13,7 +13,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 *Non-interactive mode, `$ echo "help" | ./console.py`
 ### To close:
 * Type either `EOF` or `quit`
-### Command usage of Console
+### Command usage of Console:
 * `help`
   * Usage: `help`
   * Documentation/help provided
@@ -44,7 +44,13 @@ Module for Main Console
   * `def do_destroy(self, arg)` : method to deletes instance based on class name/id
   * `def do_all(self, arg)` : prints string representation of all instances or all instances of a class
   * ` def do_update(self, arg)` : method to update instance based on class name/id by adding/updating attribute
-
+### `base_model.py`
+Module for Base Model
+* `class BaseModel` includes:
+  * `def __init__(self, *args, **kwargs)` : method to initialize instance
+  * `def save(self)` : method to update attributes `updated_at` with current datetime.
+  * `def to_json(self)` : method to return dictionary of all key/values of instance and teh class name
+  * 
 ## Limitations
 
 
