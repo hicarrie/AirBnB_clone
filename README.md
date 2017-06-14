@@ -94,16 +94,10 @@ Module for serializing and deserializing instances and JSON
 ### `test_state.py`
 ### `test_user.py`
 
-## Limitations
-
-
-## Bugs
-
-
 ## Authors
 * Carrie Ybay, <a href='https://github.com/hicarrie'>Github</a>
 * Naomi Sorrell, <a href='https://github.com/NamoDawn'>Github</a>
 
 ## License
-Public Domain, no copywrite protection### `amenity.py`
+Public Domain, no copywrite protection
  
