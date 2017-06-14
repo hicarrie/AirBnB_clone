@@ -50,7 +50,8 @@ Module for Base Model
   * `def __init__(self, *args, **kwargs)` : method to initialize instance
   * `def save(self)` : method to update attributes `updated_at` with current datetime.
   * `def to_json(self)` : method to return dictionary of all key/values of instance and teh class name
-  * 
+  * `def __str__(self)` : method to print dictionary of attributes of the instance.
+ 
 ## Limitations
 
 
