@@ -38,7 +38,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """Creates new instance, saves it, and prints id"""
+        """Creates new instance, saves it, and prints id
+        Usage: $ create <class name>"""
         args = arg.split()
         if len(args) != 1:
             print("** class name missing **")
@@ -51,8 +52,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        """Prints string representation of an
-        instance based on class name/id"""
+        """Prints string representation of an instance based on class name/id
+        Usage: $ show <class name> <id>"""
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -74,7 +75,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, arg):
-        """Deletes instance based on class name/id"""
+        """Deletes instance based on class name/id
+        Usage: $ destroy <class name> <id>"""
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -101,8 +103,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-        """Prints string representation of all instances
-        or all instances of a class"""
+        """Prints string representation of all instances of a class
+        Usage: $ all <class name> or $ all"""
         args = arg.split()
         object_dict = storage.all()
         if len(args) == 0:
@@ -120,8 +122,8 @@ class HBNBCommand(cmd.Cmd):
                 print("[]")
 
     def do_update(self, arg):
-        """Updates instance based on class name/id
-        by adding/updating attribute"""
+        """Updates instance based on class name/id by adding/updating attribute
+        Usage: $ update <class name> <id> <attribute name> <attribute value>"""
         args = arg.split(" ", 3)
         object_dict = storage.all()
         try:
