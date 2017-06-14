@@ -76,10 +76,24 @@ Module for User Model
 * `class User` includes:
   * `def __init__(self, *args, **kwargs) : method to make instance of user
 ### `__init__.py`
-Module for Init
-* creates an instance of FileStorage and reloads it
- 
- 
+* initializes package
+### `file_storage.py`
+Module for serializing and deserializing instances and JSON
+* `class FileStorage` includes:
+  * `def all(self)` : methods to return __objects
+  * `def new(self, obj)` : method to set obj in __objects with key/value pair 
+  * `def save(self)` : method to serialize __objects to JSON file
+  * `def reload(self)` : method to deserialize the JSON to __objects
+##Test Files : Unit Tests for respectively named files
+### `test_amenity.py`
+### `test_base_model.py`
+### `test_city.py`
+### `test___init__.py`
+### `test_place.py`
+### `test_review.py`
+### `test_state.py`
+### `test_user.py`
+
 ## Limitations
 
 
