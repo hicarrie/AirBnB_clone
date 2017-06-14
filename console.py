@@ -145,6 +145,10 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
+        for i in range(len(args)):
+            if args[i].startswith('"') and args[i].endswith('"'):
+                args[i] = args[i][1:-1]
+
         for full_key in object_dict.keys():
             key = full_key.split('.')
             key_id = key[1]
