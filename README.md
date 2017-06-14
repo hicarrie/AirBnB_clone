@@ -8,12 +8,12 @@ Files interpreted/run on Ubuntu 14.04 LTS with Python 3
 All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-0008/
 
 ## How to use the Console
-To start:
-a. Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
-b. Non-interactive mode, `$ echo "help" | ./console.py`
-To close:
-Type either `EOF` or `quit`
-### Command usage of Console
+### To start:
+* Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
+*Non-interactive mode, `$ echo "help" | ./console.py`
+### To close:
+* Type either `EOF` or `quit`
+### Command usage of Console:
 * `help`
   * Usage: `help`
   * Documentation/help provided
@@ -34,40 +34,24 @@ Type either `EOF` or `quit`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
 
 ## Files
-### `monty.h`
-Header file with prototypes for all functions and structs used in the interpreter.
-### `FILES`
-* `main_monty.c`: the ``main_monty`` function from which all other files' execution originates.
-* `check_funcs.c`: includes:
-  * `check_args`: function to check if arguments are passed
-  * `check_push_val`: function to assess if `push` argument is an integer
-* `free_func.c`: includes:
-  * `free_everything`: function to call all free functions
-  * `free_pointers`: function to free double pointers
-  * `free_stack`: function to free stack
-* `helper_funcs.c`: includes:
-  * `convert_push_arg`: converts string to integer
-  * `make_struct`: mallocs space for global struct
-  * `stack_len`: finds the number of nodes in a stack
-  * `find_func`: searches for the op_code or prints message and return error
-* `parsers.c`: includes:
-  * `parse`: tokenizes buffer from getline into arguments for assessment
-  * `parse_check`: checks that buff is not NULL and mallocs space for tok_args
-* `op_math.c`: includes:
-  * `op_add`: setting first node's value to the sum of the first two nodes' values
-  * `op_sub`: sets first node's value to the remainder of subtracting the second node and it is removed
-  * `op_mul`: multiply first and second node's values and store in the first node
-  * `op_div`: divides second node's value by the first and stores in first node
-  * `op_mod`: divides second nodes's value by first and remainder is stored in first node
-* `op_other.c`: includes:
-  * `op_pall`: prints all `n` values on stack
-  * `op_pint`: print `n` value at the top of the stack
-  * `op_nop`: does nothing!
-* `op_stack_manipulation.c`: includes:
-  * `op_push`: pushes a new node with `n` value to the stack
-  * `op_pop`: removes/frees value at top of stack
-  * `op_swap`: swaps the first two `n` values in the stack with one another
-
+### `console.py`
+Module for Main Console
+* `class HBNBCommand(cmd.Cmd)` includes:
+  * `def emptyline(self)` : method to handle empty line 
+  * `def do_quit(self, line)` : quit command method to exit console
+  * `def do_create(self, arg)` : method to make new instance, saves it, and print id
+  * `def do_show(self, arg)` : method to print string representation of an instance based on class name/id
+  * `def do_destroy(self, arg)` : method to deletes instance based on class name/id
+  * `def do_all(self, arg)` : prints string representation of all instances or all instances of a class
+  * ` def do_update(self, arg)` : method to update instance based on class name/id by adding/updating attribute
+### `base_model.py`
+Module for Base Model
+* `class BaseModel` includes:
+  * `def __init__(self, *args, **kwargs)` : method to initialize instance
+  * `def save(self)` : method to update attributes `updated_at` with current datetime.
+  * `def to_json(self)` : method to return dictionary of all key/values of instance and teh class name
+  * `def __str__(self)` : method to print dictionary of attributes of the instance.
+ 
 ## Limitations
 
 
