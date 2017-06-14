@@ -51,6 +51,14 @@ Module for Base Model
   * `def save(self)` : method to update attributes `updated_at` with current datetime.
   * `def to_json(self)` : method to return dictionary of all key/values of instance and teh class name
   * `def __str__(self)` : method to print dictionary of attributes of the instance.
+### `amenity.py`
+Module for Amenity Model
+* `class Amenity` includes:
+  * `def __init__(self, *args, **kwargs) : method to make an instance of amenity
+### `city.py`
+Module for City Model
+* `class City` includes:
+  * `def __init__(self, *args, **kwargs) : method to make instance of amenity
  
 ## Limitations
 
