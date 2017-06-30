@@ -3,7 +3,7 @@ Front-end prototype for Airbnb Clone
 
 ## Project Notes
 ### Style
-Code is W3C compliant and validates with W3C-Validator
+Code is W3C compliant and validates with [W3C-Validator](https://github.com/holbertonschool/W3C-Validator)
 ### Restrictions
 - Not allowed to use `!important`, `id`, or Javascript
 - No cross browsers
