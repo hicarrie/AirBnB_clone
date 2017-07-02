@@ -6,6 +6,7 @@ footer {
     width: 100%;
     border-top: solid 1px #CCCCCC;
     text-align: center;
+    overflow: hidden;
 }
 
 .center {
