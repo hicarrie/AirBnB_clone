@@ -1,0 +1,124 @@
+.places {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.places h1 {
+    width: 100%;
+    align-self: stretch;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+.places article {
+    margin: 20px;
+    padding: 20px;
+    width: 390px;
+    border: solid #FF5A5F 1px;
+    border-radius: 4px;
+}
+
+article > div {
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title > h2 {
+    font-size: 30px;
+}
+
+.price_by_night {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    color: #FF5A5F;
+    border: solid #FF5A5F 4px;
+    border-radius: 60px;
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    height: 80px;
+    border-top: solid #DDDDDD 1px;
+    border-bottom: solid #DDDDDD 1px;
+    text-align: center;
+}
+
+.max_guest, .number_rooms, .number_bathrooms {
+    padding-top: 50px;
+    margin-top: 5px;
+    height: 100%;
+    width: 100px;
+}
+
+.max_guest {
+    background: url("../images/icon_group.png") no-repeat top center;
+}
+
+.number_rooms {
+    background: url("../images/icon_bed.png") no-repeat top center;
+}
+
+.number_bathrooms {
+    background: url("../images/icon_bath.png") no-repeat top center;
+}
+
+article > .amenities, article > .reviews {
+    width: 100%;
+    margin-top: 40px;
+}
+
+article > .amenities > h2, article > .reviews > h2 {
+    font-size: 16px;
+    border-bottom: solid #DDDDDD 1px;
+}
+
+article > .amenities > ul, article > .reviews > ul {
+    list-style: none;
+    padding: 0px;
+}
+
+article > .amenities > ul > li {
+    padding: 6px 30px;
+}
+
+.reviews > ul > li > h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.reviews > ul > li > p {
+    margin: 6px 0px 20px 0px;
+}
+
+li.tv {
+    height: 20px;
+    background: url("../images/icon_tv.png") no-repeat left center;
+    background-size: 20px;
+}
+
+li.wifi {
+    height: 20px;
+    background: url("../images/icon_wifi.png") no-repeat left center;
+    background-size: 20px;
+}
+
+li.pets {
+    height: 20px;
+    background: url("../images/icon_pets.png") no-repeat left center;
+    background-size: 20px;
+}
