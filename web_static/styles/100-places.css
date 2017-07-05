@@ -31,7 +31,10 @@ article > div {
 }
 
 .title > h2 {
+    flex: 1;
+    flex-grow: 1;
     font-size: 30px;
+    text-align: center;
 }
 
 .price_by_night {
